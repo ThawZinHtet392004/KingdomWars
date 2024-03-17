@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Archer.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Unit.cpp" />
   </ItemGroup>
@@ -136,6 +137,7 @@
     <None Include="README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Archer.h" />
     <ClInclude Include="src\Unit.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
