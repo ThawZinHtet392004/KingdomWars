@@ -1,17 +1,9 @@
-#include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <string>
-#include <fstream>
-#include "Unit.h" 
-#include "Archer.h"
-
+#include "GameLoop.h"
 
 
 int main()
 {
 
-	system("Pause");
-	return 0;
+	return GameLoop::run();
 }
 
