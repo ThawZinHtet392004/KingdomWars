@@ -9,18 +9,12 @@ Unit::Unit() :Unit(0, 0, 0, 0, " ")
 	cout << "Inside default" << this->name << " copy constructor : " << endl;
 }
 
-Unit::Unit(const double& h, const double& a, const double& d, const double& i, const string& n)
-	: health(h), attack(a), defense(d), intel(i), name(n)
+Unit::Unit(const double&health, const double&attack, const double& defense, const double& intelligence, const string& name)
+	: health(health), attack(attack), defense(defense), intel(intelligence), name(name)
 {
 	cout << "Inside non-default " << this->name << " copy constructor : " << endl;
 }
- //smarter way
-//Unit::Unit(const double& health, const double& attack, const double& defense, const double& intel, const char& rank)
-//{
-//}
-//;
 
-//Unit::Unit(const double& health, const double& attack, const double& defense, const double& intel, const char& rank):health(0),attack(0),defense(0),intel(0),rank(){
 Unit::Unit(const Unit& u)
 {
 	cout << "Inside copy " << this->name << " constructor: ";
@@ -38,14 +32,14 @@ Unit::~Unit()
 
 //setters
 
-void Unit::setHealth(const double& h)
+void Unit::setHealth(const double&health)
 {
-	this->health = h;
+	this->health =health;
 }
 
-void Unit::setAttack(const double& a)
+void Unit::setAttack(const double&attack)
 {
-	this->attack = a;
+	this->attack =attack;
 }
 
 void Unit::setDefense(const double& d)

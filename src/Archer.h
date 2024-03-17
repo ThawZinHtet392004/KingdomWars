@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Unit.h"
-enum class Archertype
+enum class  ArcherType
 {
 	Ranger,
 	Captain,
@@ -9,31 +9,30 @@ enum class Archertype
 	none
 };
 
-enum class Arrowtype
+enum class Arrowtype 
 {
 	Blaze,
 	Rain,
 	none
 };
 
-class Archer:public Unit
+class Archer: public Unit
 {
 private:
 	int arrows;
-	Archertype archertype;
-	Arrowtype type;
-	int attack_mult; 
+	 ArcherType archer_type;
+	Arrowtype arrow_type;
+	double attack_mult; 
 
 public:
 	//constructors
 	Archer();
-	Archer(const Archertype&, const int&, const double& h, const double& a, const double& d, const double& i ,const string& n);
-	Archer(const Archer&); //changed to unit so it has access to unit parent class
-
+	Archer(const ArcherType& archertype, const int& arrow_count, const double& health, const double& attack, const double& defense, const double& intelligence, const string& name);
+		Archer(const Archer&); 
 	//Getters
 	int getArrows() const;
-	Archertype getArchertype() const;
-	int multiplier() const;
+	 ArcherType getArchertype() const;
+	double multiplier() const;
 
 	//Setters
 
@@ -41,6 +40,6 @@ public:
 	~Archer();
 
 	//Member functions
-	void reload(const int& arrow);
+	void reload(const int&attackrrow);
 };
 

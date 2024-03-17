@@ -1,39 +1,43 @@
 #include "Archer.h"
 
-Archer::Archer(): Archer(Archertype::Soldier,10,100,20,20,40," ") //not zero since they must have default values for game startup
+Archer::Archer(): Archer(ArcherType::Soldier,10,100,20,20,40, "Default Archer") //not zero since they must have default values for game startup
 {
 	cout << "Creating " << Unit::getName() << " default constructor " << endl;
 }
 
-Archer::Archer(const Archertype& archertype, const int& arrow, const double& h, const double& a, const double& d, const double& i, const string& n):Unit::Unit(h, a, d, i, n),arrows(arrow), archertype(archertype)
+
+Archer::Archer(const ArcherType &archertype, const int&arrow_count, const double&health, const double&attack, const double& defense, const double& intelligence, const string& name)
+	:Unit::Unit(health,attack,defense,intelligence,name), archer_type(archertype), arrows(arrow_count)
 {
 	switch (archertype)
+	
 	{
-	case Archertype::Captain:
-	{
-		this->attack_mult = 2;
-		this->type = Arrowtype::Blaze;
-	}
-	case Archertype::Ranger:
-	{
-		this->attack_mult = 1.5;
-		this->type = Arrowtype::Rain;
-	}
-	case Archertype::Soldier:
-	{
-		this->attack_mult = 1;
-		this->type = Arrowtype::none;
-	}
-	default:
-		break;
+		case ArcherType::Captain:
+	
+		{
+			this->attack_mult = 2;
+			this->arrow_type = Arrowtype::Blaze;
+		}
+		case ArcherType::Ranger:
+		{
+			this->attack_mult = 1.5;
+			this->arrow_type = Arrowtype::Rain;
+		}
+		case ArcherType::Soldier:
+		{
+			this->attack_mult = 1;
+			this->arrow_type = Arrowtype::none;
+		}
+		default:
+			break;
 	}
 }
 
 Archer::Archer(const Archer& archer): Unit(archer.getHealth(),archer.getAttack(),archer.getDefense(),archer.getIntel(),archer.getName())
 {
-	this->archertype = archer.getArchertype();
-	this->arrows = archer.getArrows();
-	this->attack_mult = archer.multiplier();
+	this->archer_type =archer.getArchertype();
+	this->arrows =archer.getArrows();
+	this->attack_mult =archer.multiplier();
 }
 
 int Archer::getArrows() const
@@ -41,12 +45,12 @@ int Archer::getArrows() const
 	return this->arrows;
 }
 
-Archertype Archer::getArchertype() const
+ ArcherType Archer::getArchertype() const
 {
-	return this->archertype;
+	return this->archer_type;
 }
 
-int Archer::multiplier() const
+double Archer::multiplier() const
 {
 	return this->attack_mult;
 }
@@ -56,8 +60,8 @@ Archer::~Archer()
 
 }
 
-void Archer::reload(const int& arrow)
+void Archer::reload(const int&attackrrow)
 {
-	this->arrows = arrow;
+	this->arrows =attackrrow;
 
 }

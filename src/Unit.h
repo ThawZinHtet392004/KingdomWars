@@ -20,12 +20,11 @@ private:
 	double defense;
 	double intel;
 	string name;
-	static int quantity;
-
+	
 public:
 	//constructors
 	Unit();
-	Unit(const double& h, const double& a, const double& d, const double& i, const string& n);
+	Unit(const double& health, const double&attack, const double& defense, const double& intelligence, const string& n);
 	Unit(const Unit&);
 
 	//destructor
@@ -44,7 +43,6 @@ public:
 	virtual double getDefense() const;
 	virtual double getIntel() const;
 	virtual string getName() const;
-	static int getCount();
 
 	//member functions
 	virtual void fight(Unit&); //cant put const cuz variables will be modified
