@@ -1,53 +1,8 @@
+#include "Unit.h"
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
-#include <string>
-#include <fstream>
+
 using namespace std;
 
-class Unit
-{
-private:
-	double health;
-	double attack;
-	double defense;
-	double intel;
-	char rank;
-	static int quantity;
-	string name;
-
-public:
-	//constructors
-	Unit();
-	Unit(const double& h, const double& a, const double& d,const double& i,const char& r);
-	Unit(const Unit&);
-
-	//destructor
-	~Unit();
-
-	//setters
-	virtual void setHealth(const double&);
-	virtual void setAttack(const double&);
-	virtual void setDefense(const double&);
-	virtual void setIntel(const double&);
-	virtual void setRank(const char&);
-
-	//getters
-	virtual double getHealth();
-	virtual double getAttack();
-	virtual double getDefense();
-	virtual double getIntel();
-	virtual double getRank();
-	static int getCount();
-
-	//member functions
-	virtual void fight(Unit&); //cant put const cuz variables will be modified
-	virtual void takeDamage(Unit&);
-};
-
-//Unit::Unit():health(0),attack(0),defense(0),intel(0),rank(){
-//	cout << "Inside default unit constructor: ";
-//}
 
 Unit::Unit() :Unit(0, 0, 0, 0, ' ')
 {
@@ -55,11 +10,11 @@ Unit::Unit() :Unit(0, 0, 0, 0, ' ')
 }
 
 Unit::Unit(const double& h, const double& a, const double& d, const double& i, const char& r)
-	: health(h),attack(a),defense(d),intel(i),rank(r)
+	: health(h), attack(a), defense(d), intel(i), rank(r)
 {
 	cout << "Inside non-default" << this->name << " copy constructor : " << endl;
 }
-; //smarter way
+ //smarter way
 
 
 //Unit::Unit(const double& health, const double& attack, const double& defense, const double& intel, const char& rank)
@@ -130,7 +85,7 @@ double  Unit::getRank()
 void Unit::fight(Unit& u)
 {
 	cout << u.name << " fighting" << endl;
-	u.health-= this->attack;
+	u.health -= this->attack;
 };
 
 void Unit::takeDamage(Unit& u)
@@ -139,16 +94,5 @@ void Unit::takeDamage(Unit& u)
 	this->health -= u.attack;
 };
 
-void win()
-{
-	
-}
 
-int main()
-{
-
-
-	system("Pause");
-	return 0;
-}
 
